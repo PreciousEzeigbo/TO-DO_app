@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(233, 233, 233);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+header {
+    background-color: white;
+    position: fixed;
+    padding-top: 75px;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0 4px 8px #091a3a;
+    z-index: 1000;
+}
+
+header .thinkytots {
+    position: absolute;
+    top: 14px;
+    left: 100px;
+    background-color: transparent;
+}
+
+header .thinkytots-logo {
+    width: 170px;
+    height: auto;
+}
+
+header #menu-button {
+    position: absolute;
+    color: black;
+    left: 50px;
+    top: 30px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.sidebar {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    height: 100vh;
+    width: 70px;
+    background-color: #091a3a;
+    display: flex;
+    padding-top: 20px;
+    box-shadow: 0 4px 8px #091a3a;
+    transition: all 0.5s ease;
+}
+
+.sidebar.active ~ .content {
+    left: 200px;
+    width: calc(100% -200px);
+}
+
+.sidebar.active {
+    width: 160px;
+}
+
+.sidebar ul li {
+    position: relative;
+    height: 60px;
+    line-height: 50px;
+    width: 90%;
+    list-style-type: none;
+    margin: 12px auto;
+}
+
+.sidebar ul li a {
+    display: flex;
+    color: white;
+    font-weight: bold;
+    align-items: center;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.sidebar ul li a i {
+    text-align: center;
+    height: 50px;
+    min-width: 50px;
+    line-height: 50px;
+    border-radius: 10px;
+}
+
+.sidebar ul li a:hover {
+    color: black;
+    background-color: white;
+}
+
+.sidebar .nav-text {
+    opacity: 0;
+}
+
+.sidebar.active .nav-text {
+    opacity: 1;
+}
+
+.sidebar ul li .tooltip {
+    position: absolute;
+    top: 10px;
+    left: 80px;
+    font-size: 14px;
+    opacity: 1 ;
+    padding: 12px 6px;
+    line-height: 10px;
+    box-shadow: 0 4px 8px #091a3a;
+    border-radius: 10px;
+    z-index: 1000;
+    opacity: 0;
+}
+
+.sidebar ul li:hover .tooltip {
+    opacity: 1;
+}
+
+.sidebar.active ul li .tooltip {
+    display: none;
+}

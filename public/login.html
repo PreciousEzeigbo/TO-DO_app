@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+    <header>
+            <div class="thinkytots">
+                    <img src="./images/thinkytots.jpg" alt="thinkytots-image" class="thinkytots-logo">
+            </div>
+    </header>
+    <div class="page-container">
+        <div class="image-container">
+            <img src="./images/books.jpg" alt="books-image" class="books-image">
+        </div>
+        <div class="container">
+            <div id="loading" style="display: none;">
+                <p>Submitting...</p>
+                <img src="./images/loading.gif" alt="Loading...">
+            </div>
+
+            <div id="success-message" style="display: none;">
+                <p>Login Successful! Redirecting...</p>
+            </div>
+
+            <div class="header">
+                <h2>Sign In</h2>
+            </div>
+            <form  class="form" id="form">
+                <div class="form-control">
+                    <label>Username / Email</label>
+                    <input type="text" placeholder="username / email" id="identifier">
+                    <i class="fa-solid fa-check-circle"></i>
+                    <i class="fa-solid fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+
+                <div class="form-control">
+                    <label>Password</label>
+                    <input type="password" placeholder="password" id="password">
+                    <i class="fa-solid fa-check-circle"></i>
+                    <i class="fa-solid fa-exclamation-circle"></i>
+                    <i class="fa-solid fa-eye-slash" id="toggle-password"></i>
+                    <small>Error message</small>
+                </div>
+
+                <button>Sign In</button>
+            </form>
+            <!-- Forgot Password link -->
+            <div class="forgot-password">
+                <a href="/forgotten-password.html">Forgotten Password</a>
+            </div>
+            <!-- Privacy Policy link -->
+            <div class="privacy">
+                <a href="/privacy-policy.html">Privacy Policy</a>
+            </div>
+            <!-- Registration prompt with link to the registration page -->
+            <div class="register">
+                <label>Don't have an account yet?</label>
+                <a href="./register.html" id="register">Register Here</a>
+            </div>
+        </div>
+    </div>
+    <script src="./js/login.js"></script>
+</body>
+</html>

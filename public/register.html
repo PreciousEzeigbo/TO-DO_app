@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/register.css">
+</head>
+<body>
+    <header>
+            <div class="thinkytots">
+                    <img src="./images/thinkytots.jpg" alt="thinkytots-image" class="thinkytots-logo">
+            </div>
+    </header>
+    <div class="page-container">
+        <div class="image-container">
+            <img src="./images/books.jpg" alt="books-image" class="books-image">
+        </div>
+        <div class="container">
+
+            <div id="loading" style="display: none;">
+                <p>Submitting...</p>
+                <img src="./images/loading.gif" alt="Loading...">
+            </div>
+    
+            <div id="success-message" style="display: none;">
+                <p>Registration Successful! Redirecting...</p>
+            </div>
+    
+            <div class="header">
+                <h2>Create Account</h2>
+            </div>
+            <form  class="form" id="form">
+                <div class="form-control">
+                    <label>Username</label>
+                    <input type="text" placeholder="John1234" id="username">
+                    <i class="fa-solid fa-check-circle"></i>
+                    <i class="fa-solid fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+    
+                <div class="form-control">
+                    <label>Email</label>
+                    <input type="email" placeholder="John1234@mail.com" id="email">
+                    <i class="fa-solid fa-check-circle"></i>
+                    <i class="fa-solid fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+    
+                <div class="form-control">
+                    <label>Password</label>
+                    <input type="password" placeholder="password" id="password">
+                    <i class="fa-solid fa-check-circle"></i>
+                    <i class="fa-solid fa-exclamation-circle"></i>
+                    <i class="fa-solid fa-eye-slash" id="toggle-password"></i>
+                    <small>Error message</small>
+                </div>
+    
+                <div class="form-control">
+                    <label>Confirm Password</label>
+                    <input type="password" placeholder="confirm password" id="confirmPassword">
+                    <i class="fa-solid fa-check-circle"></i>
+                    <i class="fa-solid fa-exclamation-circle"></i>
+                    <i class="fa-solid fa-eye-slash" id="toggle-confirmPassword"></i>
+                    <small>Error message</small>
+                </div>
+                <button>Register</button>
+            </form>
+            <div class="privacy">
+                <a href="/privacy-policy.html" id="privacy">Privacy Policy</a>
+            </div>
+            <!-- Text and link for users who already have an account -->
+            <div class="login">
+                <label>Already have an account?</label>
+                <a href="./login.html" id="login">Sign In</a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./js/register.js"></script>
+</body>
+</html>
