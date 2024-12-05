@@ -6,6 +6,7 @@
     <title>Home Page</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/profile.css">
 </head>
 <body>
     <header>
@@ -40,9 +41,20 @@
             </li>
         </ul>
     </div>
-    <div class="content">
-        <h1>Welcome to the Dashboard</h1>
-    </div>
+    
+    <section class="profile-container">
+        <div class="profile">
+            <img src="./images/profile.jpg" alt="profile image" class="profile-image">
+            <h1 id="username">Loading...</h2>
+            <p>Welcome to your profile!</p>
+        </div>
+        <div class="profile-info">
+            <p id="fullName">Full Name: Loading...</p>
+            <p id="email">Email: Loading...</p>
+            <p id="birthday">Birthday: Loading...</p>
+            <p id="hobbies">Hobbies: Loading...</p>
+        </div>
+    </section>
     <script src="js/home.js"></script>
 </body>
 </html>
