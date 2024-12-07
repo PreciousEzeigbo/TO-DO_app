@@ -190,6 +190,7 @@ header #menu-button {
     border-radius: 10px;
     box-shadow: 0 4px 8px #091a3a;
     margin-left: 60px;
+    cursor: pointer;
 }
 
 .dashboard-content2 {
@@ -200,6 +201,7 @@ header #menu-button {
     border-radius: 10px;
     box-shadow: 0 4px 8px #091a3a;
     margin-right: 60px;
+    cursor: pointer;
 }
 
 .dashboard-content3 {
@@ -210,6 +212,7 @@ header #menu-button {
     border-radius: 10px;
     box-shadow: 0 4px 8px #091a3a;
     margin-left: 60px;
+    cursor: pointer;
 }
 
 .dashboard-content4 {
@@ -220,6 +223,7 @@ header #menu-button {
     border-radius: 10px;
     box-shadow: 0 4px 8px #091a3a;
     margin-right: 60px;
+    cursor: pointer;
 }
 
 .leaderboard-container {
@@ -236,8 +240,14 @@ header #menu-button {
 .leaderboard-container h1 {
     font-size: 20px;
     text-align: center;
-    margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
-    color: #091a3a;
+    background-color: #091a3a;
+    padding: 10px;
+    color: white;
+}
+
+.leaderboard-container ul li {
+    text-decoration: none;
+    list-style-type: none;
 }
