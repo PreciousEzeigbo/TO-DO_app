@@ -156,3 +156,88 @@ header #menu-button {
 .sidebar.active ul li .tooltip {
     display: none;
 }
+
+.main-container {
+    display: flex;
+    background-color: rgb(233, 233, 233);
+    margin-left: 250px;
+    margin-top: 100px;
+    max-width: 1000px;
+    height: 580px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px #091a3a;
+    gap: 160px;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+    align-items: center;
+    background-color: rgb(233, 233, 233);
+    margin-left: 30px;
+    margin-top: 15px;
+    height: 500px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px #091a3a;
+}
+
+.dashboard-content1 {
+    background-color: #091a3a;
+    color: white;
+    padding: 60px 50px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px #091a3a;
+    margin-left: 60px;
+}
+
+.dashboard-content2 {
+    background-color: #7af76a;
+    color: rgb(0, 0, 0);
+    padding: 60px 50px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px #091a3a;
+    margin-right: 60px;
+}
+
+.dashboard-content3 {
+    background-color: #de3aff;
+    color: rgb(0, 0, 0);
+    padding: 60px 50px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px #091a3a;
+    margin-left: 60px;
+}
+
+.dashboard-content4 {
+    background-color: #091a3a;
+    color: white;
+    padding: 60px 50px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px #091a3a;
+    margin-right: 60px;
+}
+
+.leaderboard-container {
+    background-color: rgb(233, 233, 233);
+    margin-top: 15px;
+    margin-right: 5px;
+    flex: 1;
+    max-width: 280px;
+    max-height: 300px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px #091a3a;
+}
+
+.leaderboard-container h1 {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: #091a3a;
+}

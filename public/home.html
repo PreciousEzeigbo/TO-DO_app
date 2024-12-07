@@ -12,7 +12,7 @@
         <div class="thinkytots">
             <img src="./images/thinkytots.jpg" alt="thinkytots-image" class="thinkytots-logo">
         </div>
-        <i class="fa-solid fas fa-bars" id="menu-button"></i>
+        <i class="fa-solid fas fa-bars" id="menu-button" onclick="menuButtonClicked()"></i>
 
         <div class="user">
             <a href="profile.html">
@@ -24,7 +24,7 @@
     <div class="sidebar">
         <ul>
             <li>
-                <a href="dashboard.html"><i class="fa-solid fas fa-tachometer-alt"></i>
+                <a href="home.html"><i class="fa-solid fas fa-home"></i>
                 <span class="nav-text">Dashboard</span></a>
                 <span class="tooltip">Dashboard</span>
             </li>
@@ -40,9 +40,19 @@
             </li>
         </ul>
     </div>
-    <div class="content">
-        <h1>Welcome to the Dashboard</h1>
-    </div>
+    <section class="main-container">
+        <div class="dashboard-container">
+            <div class="dashboard-content1">Content 1</div>
+            <div class="dashboard-content2">Content 2</div>
+            <div class="dashboard-content3">Content 3</div>
+            <div class="dashboard-content4">Content 4</div>
+        </div>
+
+        <div class="leaderboard-container">
+            <h1>Leaders Board</h1>
+            
+        </div>
+    </section>
     <script src="js/home.js"></script>
 </body>
 </html>

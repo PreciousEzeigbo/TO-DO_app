@@ -1,6 +1,6 @@
 let menuBtn = document.getElementById("menu-button");
 let sidebar = document.querySelector(".sidebar");
 
-menuBtn.onclick = function () {
+function menuButtonClicked() {
     sidebar.classList.toggle("active")
 };
