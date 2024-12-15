@@ -41,10 +41,10 @@ header .thinkytots-logo {
 
 .page-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     align-items: center;
     justify-content: center;
-    gap: 100px;
+    gap: 5px;
     max-width: 1200px;
     width: 100%;
     margin-top: 100px;
@@ -54,8 +54,6 @@ header .thinkytots-logo {
     flex: 1;
     display: flex;
     justify-content: center;
-    width: 100%;
-    max-width: 500px;
 }
 
 .image-container img {
@@ -72,7 +70,6 @@ header .thinkytots-logo {
     max-width: 100%;
     overflow: hidden;
     box-shadow: 0 4px 8px #091a3a;
-    margin-top: -20px;
 }
 
 .header {
@@ -89,17 +86,19 @@ header .thinkytots-logo {
 
 #loading, #success-message {
     position: fixed;
-    top: 58%;
+    display: none;
+    top: 78%;
     left: 50%;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
     text-align: center;
     color: white;
     transform: translate(-50%, -50%);
-    display: block;
+    border-radius: 10px;
     font-weight: bold;
     font-size: 15px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    z-index: 9999;
 }
 
 #loading img {
@@ -179,47 +178,32 @@ header .thinkytots-logo {
     padding: 10px;
     font-size: 18px;
     font-family: inherit;
-    border: 2px;
-    border-radius: 4px;
+    border: 2px solid transparent;
+    border-radius: 8px;
     display: block;
-    width: 100%;
+    width: 30%;
     cursor: pointer;
+    margin: 0 auto; /* This centers the button */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
 }
 
-.forgot-password {
-    text-align: center;
-    font-family: inherit;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    cursor: pointer;
+.form button:hover {
+    background-color: rgb(200, 0, 0); /* Slightly darker red on hover */
+    transform: scale(1.05); /* Slight scale up on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
 }
 
-.forgot-password a {
-    color: #007bff;
+.form button:active {
+    transform: scale(0.95); /* Slight scale down when clicked */
 }
-
-.privacy {
-    text-align: center;
-    font-family: inherit;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    cursor: pointer;
-}
-
-.privacy a {
-    color: #007bff;
-}
-
-.register {
+.login {
     margin-bottom: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.register label {
+.login label {
     color: white;
     display: block;
     text-align: center;
@@ -230,10 +214,59 @@ header .thinkytots-logo {
     margin-right: 1px;
 }
 
-.register a {
+.login a {
     cursor: pointer;
     font-size: 20px;
     font-family: inherit;
     font-weight: bold;
     color: #007bff;
+}
+.forgot-password {
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.forgot-password a {
+    color: #4a90e2;
+    text-decoration: none;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.forgot-password a:hover {
+    color: #2c72b3;
+    text-decoration: underline;
+}
+
+.register {
+    background-color: #091a3a; /* Match the container's background */
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px; /* Space between label and link */
+}
+
+.register label {
+    color: white; /* Change to white font */
+    font-family: 'Arial', sans-serif;
+    font-size: 15px;
+    position: relative;
+}
+
+.register a {
+    color: #4a90e2;
+    text-decoration: none;
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.register a:hover {
+    color: #2c72b3;
+    text-decoration: underline;
 }

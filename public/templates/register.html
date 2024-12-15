@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Page</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/register.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
 </head>
 <body>
     <header>
             <div class="thinkytots">
-                    <img src="./images/thinkytots.jpg" alt="thinkytots-image" class="thinkytots-logo">
+                <img src="{{ url_for('static', filename='images/thinkytots.jpg') }}" alt="thinkytots-image" class="thinkytots-logo">
             </div>
     </header>
     <div class="page-container">
         <div class="image-container">
-            <img src="./images/books.jpg" alt="books-image" class="books-image">
+            <img src="{{ url_for('static', filename='images/book2.png') }}" alt="books-image" class="books-image">
         </div>
-        <div class="container">
 
+        <div class="container">
             <div id="loading" style="display: none;">
                 <p>Submitting...</p>
-                <img src="./images/loading.gif" alt="Loading...">
+                <img src="{{ url_for('static', filename='images/loading.gif') }}" alt="Loading...">
             </div>
     
             <div id="success-message" style="display: none;">
@@ -50,7 +50,7 @@
     
                 <div class="form-control">
                     <label>Password</label>
-                    <input type="password" placeholder="password" id="password">
+                    <input type="password" placeholder="Password" id="password">
                     <i class="fa-solid fa-check-circle"></i>
                     <i class="fa-solid fa-exclamation-circle"></i>
                     <i class="fa-solid fa-eye-slash" id="toggle-password"></i>
@@ -59,7 +59,7 @@
     
                 <div class="form-control">
                     <label>Confirm Password</label>
-                    <input type="password" placeholder="confirm password" id="confirmPassword">
+                    <input type="Password" placeholder="Confirm password" id="confirmPassword">
                     <i class="fa-solid fa-check-circle"></i>
                     <i class="fa-solid fa-exclamation-circle"></i>
                     <i class="fa-solid fa-eye-slash" id="toggle-confirmPassword"></i>
@@ -67,17 +67,15 @@
                 </div>
                 <button>Register</button>
             </form>
-            <div class="privacy">
-                <a href="/privacy-policy.html" id="privacy">Privacy Policy</a>
-            </div>
             <!-- Text and link for users who already have an account -->
             <div class="login">
                 <label>Already have an account?</label>
-                <a href="./login.html" id="login">Sign In</a>
+                <a href="{{ url_for('public.login') }}" id="login">Login</a>
+            </div>
             </div>
         </div>
     </div>
     
-    <script src="./js/register.js"></script>
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
 </body>
 </html>
