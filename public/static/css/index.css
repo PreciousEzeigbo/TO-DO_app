@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(233, 233, 233);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: scroll;
+}
+
+header {
+    background-color: white;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 6px 18px;
+    gap: 5px;
+    box-shadow: 0 4px 8px #091a3a;
+    z-index: 1000;
+}
+
+header .thinkytots {
+    flex: 1;
+}
+
+header .thinkytots-logo {
+    width: 170px;
+    height: auto;
+    margin-left: 80px;
+}
+
+header nav {
+    flex: 2;
+    text-align: center;
+}
+
+header .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin-left: 180px;
+}
+
+header .nav-links li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    font-size: 22px;
+}
+
+.learning-image-container {
+    position: relative;
+    height: 800px;
+    display: flex;
+    overflow: hidden;
+    margin-top: 80px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.learning-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    box-shadow: 0 4px 8px #091a3a;
+}
+
+.learning-quote {
+    position: absolute;
+    display: flex;
+    top: 20%;
+    margin-right: 50%;
+    left: 90px;
+}
+
+.quote {
+    font-size: 3.5vw;
+    font-weight: bolder;
+    color: white;
+}
+
+.link {
+    position: absolute;
+    display: flex;
+    top: 45%;
+    margin-right: 100%;
+    left: 30%;
+}
+
+.link a {
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bolder;
+    color: white;
+    padding: 15px 25px;
+    white-space: nowrap;
+}
+
+.link .get-started {
+    background-color: rgb(184, 0, 184);
+    border-radius: 10px;
+}
+
+#features {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 28px;
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.feature-items {
+    flex: 1;
+    max-width: 28%;
+    text-align: center;
+    margin-bottom: 35px;
+    border-radius: 10px;
+    background-color: white; 
+}
+
+.feature-items img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.feature-items h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.feature-items p {
+    font-size: 20px;
+    color: rgb(184, 0, 184);
+    margin-top: 10px;
+}
+
+#about {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 28px;
+}
+
+.about-items {
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+#about p {
+    font-size: 25x;
+    color: rgb(184, 0, 184);
+    margin-top: 10px;
+}

@@ -2,7 +2,6 @@
 const form = document.getElementById('form');
 const usernameOrEmail = document.getElementById('identifier');
 const password = document.getElementById('password');
-const togglePasswordBtn = document.getElementById('toggle-password');
 
 
 // Check if the login form exists on the page
@@ -114,16 +113,3 @@ if (form) {
         formControl.className = 'form-control success';
     }
 }
-
-// Toggle password
-togglePasswordBtn.addEventListener('click', () => {
-    if (password.type === 'password') {
-        password.type = 'text';
-        togglePasswordBtn.classList.remove('fa-eye-slash');
-        togglePasswordBtn.classList.add('fa-eye');
-    } else {
-        password = 'password';
-        togglePasswordBtn.classList.remove('fa-eye');
-        togglePasswordBtn.classList.add('fa-eye-slash');
-    };
-});

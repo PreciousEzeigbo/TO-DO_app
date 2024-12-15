@@ -4,9 +4,6 @@ const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirmPassword');
-const togglePasswordBtn = document.getElementById('toggle-password');
-const toggleConfirmPasswordBtn = document.getElementById('toggle-confirmPassword');
-
 
 
 // Check if the registration form exists on the page
@@ -153,28 +150,3 @@ if (form) {
         return passwordPattern.test(password);
     } 
 }
-
-// Toggle password
-togglePasswordBtn.addEventListener('click', () => {
-    if (password.type === 'password') {
-        password.type = 'text';
-        togglePasswordBtn.classList.remove('fa-eye-slash');
-        togglePasswordBtn.classList.add('fa-eye');
-    } else {
-        password.type = 'password';
-        togglePasswordBtn.classList.remove('fa-eye');
-        togglePasswordBtn.classList.add('fa-eye-slash');
-    };
-});
-
-toggleConfirmPasswordBtn.addEventListener('click', () => {
-    if (confirmPassword.type === 'password') {
-        confirmPassword.type = 'text';
-        toggleConfirmPasswordBtn.classList.remove('fa-eye-slash');
-        toggleConfirmPasswordBtn.classList.add('fa-eye');
-    } else {
-        confirmPassword.type = 'password';
-        toggleConfirmPasswordBtn.classList.remove('fa-eye');
-        toggleConfirmPasswordBtn.classList.add('fa-eye-slash');
-    };
-});
