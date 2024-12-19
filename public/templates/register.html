@@ -23,16 +23,14 @@
                 <p>Registration Successful! Redirecting...</p>
             </div>
             {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-                        {% if category == 'success' %}
-                            <div id="success-message" style="display: block;">
-                                <p>{{ message }}</p>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
     
             <div class="header">
                 <h2>Create Account</h2>
