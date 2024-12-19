@@ -172,7 +172,7 @@ header .thinkytots-logo {
     visibility: visible;
 }
 
-.form button {
+.btn {
     background-color: rgb(255, 0, 0);
     color: white;
     padding: 10px;
@@ -183,17 +183,17 @@ header .thinkytots-logo {
     display: block;
     width: 40%;
     cursor: pointer;
-    margin: 0 auto; /* This centers the button */
+    margin: 0 auto; /* This centers the btn */
     transition: all 0.3s ease; /* Smooth transition for hover effects */
 }
 
-.form button:hover {
+.btn:hover {
     background-color: rgb(200, 0, 0); /* Slightly darker red on hover */
     transform: scale(1.05); /* Slight scale up on hover */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
 }
 
-.form button:active {
+.btn:active {
     transform: scale(0.95); /* Slight scale down when clicked */
 }
 

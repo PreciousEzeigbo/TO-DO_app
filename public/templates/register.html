@@ -19,19 +19,25 @@
         </div>
 
         <div class="container">
-            <div id="loading" style="display: none;">
-                <p>Submitting...</p>
-                <img src="{{ url_for('static', filename='images/loading.gif') }}" alt="Loading...">
-            </div>
-    
             <div id="success-message" style="display: none;">
                 <p>Registration Successful! Redirecting...</p>
             </div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        {% if category == 'success' %}
+                            <div id="success-message" style="display: block;">
+                                <p>{{ message }}</p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
     
             <div class="header">
                 <h2>Create Account</h2>
             </div>
-            <form  class="form" id="form">
+            <form  class="form" id="form" method="POST" action="{{ url_for('public.register') }}">
                 <div class="form-control">
                     <label>Username</label>
                     <input type="text" placeholder="John1234" id="username">
@@ -63,7 +69,7 @@
                     <i class="fa-solid fa-exclamation-circle"></i>
                     <small>Error message</small>
                 </div>
-                <button>Register</button>
+                <button type="submit" class="btn">Register</button>
             </form>
             <!-- Text and link for users who already have an account -->
             <div class="login">

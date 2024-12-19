@@ -10,7 +10,49 @@ def register_routes(app, db, bcrypt):
 
     @public_bp.route('/')
     def index():
-        return render_template("register.html")
+        return render_template("index.html")
+    
+    @public_bp.route('/register', methods=['GET', 'POST'])
+    def register():
+        if request.method == 'GET':
+            return render_template('register.html')
+
+        elif request.method == 'POST':
+            username = request.form.get('username')
+            email = request.form.get('email')
+            password = request.form.get('password')
+            confirm_password = request.form.get('confirm_password')
+
+            # Check if the passwords match
+            if password != confirm_password:
+                flash("Passwords do not match", 'danger')
+                return redirect(url_for('public.register'))
+
+            # Check if the username or email already exists
+            user_exists = User.query.filter_by(username=username).first()
+            email_exists = User.query.filter_by(email=email).first()
+
+            if user_exists:
+                flash("User already exists", 'danger')
+                return redirect(url_for('public.login'))
+
+            if email_exists:
+                flash("Email already in use", 'danger')
+                return redirect(url_for('public.register'))
+
+            # Create and save the new user
+            new_user = User(username=username, email=email)
+
+
+            # Hash the password
+            new_user.set_password(password)
+
+            db.session.add(new_user)
+            db.session.commit()
+
+            flash("Registration successful!", 'success')
+            return redirect(url_for('public.login'))
+
     
     @public_bp.route('/login', methods=['GET', 'POST'])
     def login():
@@ -32,7 +74,7 @@ def register_routes(app, db, bcrypt):
                 flash('Invalid username or password', 'danger')  # Flash message for login error
                 return redirect(url_for('login'))  # Redirect back to login page
 
-    @app.route('/forgotten', methods=['GET', 'POST'])
+    @public_bp.route('/forgotten', methods=['GET', 'POST'])
     def forgotten():
         if request.method == 'GET':
             return render_template('forgotten.html')

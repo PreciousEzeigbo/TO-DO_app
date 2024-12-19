@@ -6,6 +6,15 @@ const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirmPassword');
 
 
+document.getElementById('form').addEventListener('submit', function(e) {
+    // Your validation logic here
+    
+    // If validation passes
+    document.getElementById('success-message').style.display = 'block';
+    setTimeout(function() {
+        window.location.href = "{{ url_for('public.login') }}";
+    }, 2000); // Redirect after 2 seconds
+});
 // Check if the registration form exists on the page
 if (form) {
     // Add an event listener for the form's submit event
