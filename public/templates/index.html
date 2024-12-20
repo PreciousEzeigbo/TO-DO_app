@@ -23,12 +23,12 @@
 
     <section id="intro">
         <div class="learning-image-container">
-            <img src="./images/learning.jpg" alt="learning" class="learning-image">
+            <img src="{{ url_for('static', filename='images/learning.jpg') }}" alt="learning" class="learning-image">
             <div class="learning-quote">
                 <div class="quote">Nurturing Young Minds, Empowering Bright Futures</div>
             </div>
             <div class="link">
-                <a href="{{ url_for('register') }}" class="get-started">Get Started</a>
+                <a href="{{ url_for('public.register') }}" class="get-started">Get Started</a>
             </div>
         </div>
     </section>
@@ -37,19 +37,19 @@
         <h1>Features</h1>
         <div class="features">
             <div class="feature-items">
-                <img src="./images/alphabets.jpg" alt="alphabets">
+                <img src="{{ url_for('static', filename='images/alphabets.jpg') }}" alt="alphabets">
                 <h2>Alphabets</h2>
                 <p>Learning Alphabets</p>
             </div>
 
             <div class="feature-items">
-                <img src="./images/numbers.jpg" alt="numbers">
+                <img src="{{ url_for('static', filename='images/numbers.jpg') }}" alt="numbers">
                 <h2>Numbers</h2>
                 <p>Learning Numbers</p>
             </div> 
 
             <div class="feature-items">
-                <img src="./images/alphabets.jpg" alt="alphabets">
+                <img src="{{ url_for('static', filename='images/alphabets.jpg') }}" alt="alphabets">
                 <h2>Alphabets</h2>
                 <p>Learning Alphabets</p>
             </div> 

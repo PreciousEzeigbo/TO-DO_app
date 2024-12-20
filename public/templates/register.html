@@ -35,7 +35,7 @@
             <div class="header">
                 <h2>Create Account</h2>
             </div>
-            <form  class="form" id="form" method="POST" action="{{ url_for('public.register') }}">
+            <form id="form" method="POST" action="{{ url_for('public.register') }}">
                 <div class="form-control">
                     <label>Username</label>
                     <input type="text" placeholder="John1234" id="username">
@@ -78,6 +78,6 @@
         </div>
     </div>
     
-    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/register.js') }}"></script>
 </body>
 </html>
