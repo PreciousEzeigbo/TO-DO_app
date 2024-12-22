@@ -6,6 +6,7 @@ from flask_login import LoginManager
 
 db = SQLAlchemy()
 login_manager = LoginManager()
+bcrypt = Bcrypt()
 
 def create_app():
     app = Flask(__name__, template_folder= 'templates', static_folder='static')
@@ -16,7 +17,6 @@ def create_app():
 
 
     db.init_app(app)
-    bcrypt = Bcrypt()
     bcrypt.init_app(app)
 
     # Initialize login_manager and set the login view
