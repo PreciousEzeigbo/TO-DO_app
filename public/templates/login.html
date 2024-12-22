@@ -26,7 +26,7 @@
             <div class="header">
                 <h2>Login</h2>
             </div>
-            <form  class="form" id="form">
+            <form class="form" id="form" action="{{ url_for('public.login') }}" method="POST">
                 <div class="form-control">
                     <label>Email</label>
                     <input type="email" placeholder="John1234@mail.com" id="email">

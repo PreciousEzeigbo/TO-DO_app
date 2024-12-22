@@ -1,66 +1,79 @@
 // Login form handling
 const form = document.getElementById('form');
-const usernameOrEmail = document.getElementById('identifier');
+const email = document.getElementById('email'); // Match your input ID
 const password = document.getElementById('password');
 
-
-// Check if the registration form exists on the page
+// Check if the login form exists on the page
 if (form) {
     // Add an event listener for the form's submit event
     form.addEventListener('submit', async (event) => {
         // Prevent the default form submission behavior
         event.preventDefault();
+
         // Validate form inputs
         if (checkInputs()) {
-            // Submit form if inputs are valid
-            form.submit();
+            // Create a FormData object to submit via fetch
+            const formData = new FormData(form);
+
+            try {
+                // Use fetch to handle form submission
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                });
+
+                if (response.ok) {
+                    // Handle successful login (e.g., redirect to a new page)
+                    window.location.href = "/dashboard"; // Replace with your desired route
+                } else {
+                    // Handle login failure (e.g., display an error message)
+                    setErrorFor(email, "Invalid email or password");
+                    setErrorFor(password, "");
+                }
+            } catch (error) {
+                console.error("Error submitting form:", error);
+            }
         }
     });
 }
 
+// Validation function
 function checkInputs() {
-    // Retrieve the values from the login form inputs
-    const identifierValue = usernameOrEmail.value.trim();
+    const emailValue = email.value.trim();
     const passwordValue = password.value.trim();
 
     let valid = true;
 
-    if (identifierValue === '') {
-        // Display error and add the error class
-        setErrorFor(usernameOrEmail, 'Username or Email cannot be blank');
+    // Email validation
+    if (emailValue === '') {
+        setErrorFor(email, 'Email cannot be blank');
         valid = false;
     } else {
-        // Display success class
-        setSuccessFor(usernameOrEmail);
+        setSuccessFor(email);
     }
 
+    // Password validation
     if (passwordValue === '') {
-        // Display error and add the error class
         setErrorFor(password, 'Password cannot be blank');
         valid = false;
     } else {
-        // Display success class
         setSuccessFor(password);
     }
 
-    // If form is valid, return valid
     return valid;
 }
 
-
-// .form-control
+// Error display function
 function setErrorFor(input, message) {
     const formControl = input.parentElement;
-    const small = formControl.querySelector('small')
+    const small = formControl.querySelector('small');
 
-    // Add the error class
+    // Add the error class and set the message
     formControl.className = 'form-control error';
-
-    // Add error message inside small
     small.innerText = message;
 }
 
-// .form-control
+// Success display function
 function setSuccessFor(input) {
     const formControl = input.parentElement;
 

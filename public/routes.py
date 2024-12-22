@@ -23,42 +23,48 @@ def register_routes(app, db, bcrypt):
             password = request.form.get('password')
             confirm_password = request.form.get('confirm_password')
 
+            # Validate required fields
+            if not username or not email or not password or not confirm_password:
+                flash("All fields are required", 'danger')
+                return redirect(url_for('public.register'))
+
             # Check if the passwords match
             if password != confirm_password:
                 flash("Passwords do not match", 'danger')
                 return redirect(url_for('public.register'))
 
-            # Check if the username or email already exists
-            user_exists = User.query.filter_by(username=username).first()
-            email_exists = User.query.filter_by(email=email).first()
-
-            if user_exists:
+           # Check if the username or email already exists
+            if User.query.filter_by(username=username).first():
                 flash("User already exists", 'danger')
-                return redirect(url_for('public.login'))
+                return redirect(url_for('public.register'))
 
-            if email_exists:
+            if User.query.filter_by(email=email).first():
                 flash("Email already in use", 'danger')
                 return redirect(url_for('public.register'))
+
 
             # Create and save the new user
             new_user = User(username=username, email=email)
 
 
             # Hash the password
-            new_user.set_password(password)
-
-            db.session.add(new_user)
-            db.session.commit()
-
-            flash("Registration successful!", 'success')
-            return redirect(url_for('public.login'))
+            try:
+                new_user.set_password(password)
+                db.session.add(new_user)
+                db.session.commit()
+                flash("Registration successful!", 'success')
+                return redirect(url_for('public.login'))
+            except Exception as e:
+                db.session.rollback()
+                flash(f"An error occurred: {str(e)}", 'danger')
+                return redirect(url_for('public.register'))
 
     
     @public_bp.route('/login', methods=['GET', 'POST'])
     def login():
         if request.method == 'GET':
             return render_template("login.html")
-        if request.method == 'POST':
+        elif request.method == 'POST':
             username = request.form.get('username')
             password = request.form.get('password')
 
@@ -72,7 +78,7 @@ def register_routes(app, db, bcrypt):
             else:
                 # Invalid credentials
                 flash('Invalid username or password', 'danger')  # Flash message for login error
-                return redirect(url_for('login'))  # Redirect back to login page
+                return redirect(url_for('public.login'))  # Redirect back to login page
 
     @public_bp.route('/forgotten', methods=['GET', 'POST'])
     def forgotten():
@@ -80,6 +86,19 @@ def register_routes(app, db, bcrypt):
             return render_template('forgotten.html')
         elif request.method == 'POST':
             pass
+    
+    @public_bp.route('/logout')
+    def logout():
+        logout_user()
+        flash('You have been logged out.', 'info')
+        return redirect(url_for('public.login'))
+
+    @public_bp.route('/profile')
+    @login_required
+    def profile():
+        """Render the profile page for logged-in users."""
+        return render_template("profile.html", user=current_user)
+    
 
     # Custom error pages
 
