@@ -24,7 +24,7 @@ if (form) {
 
                 if (response.ok) {
                     // Handle successful login (e.g., redirect to a new page)
-                    window.location.href = "/dashboard"; // Replace with your desired route
+                    window.location.href = '/profile'; // Replace with your desired route
                 } else {
                     // Handle login failure (e.g., display an error message)
                     setErrorFor(email, "Invalid email or password");
