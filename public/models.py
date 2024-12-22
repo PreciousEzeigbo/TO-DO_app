@@ -2,9 +2,6 @@ from flask_login import UserMixin
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from public.app import db, login_manager
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
 
 @login_manager.user_loader
 def load_user(user_id):
