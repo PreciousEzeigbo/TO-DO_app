@@ -75,18 +75,24 @@ def register_routes(app, db, bcrypt):
         if request.method == 'GET':
             return render_template("login.html")
         elif request.method == 'POST':
-            userIdentifier = request.form.get('email') or request.form.get('username')
+            userIdentifier = request.form.get('userIdentifier')
             password = request.form.get('password')
+
+            print(f"User Identifier: {userIdentifier}")
+            print(f"Password: {password}")
 
             # Retrieve user from database
             user = User.query.filter((User.email == userIdentifier) | (User.username == userIdentifier)).first()
-
+            print(f"User found: {user}")
 
             if user and user.check_password(password):
+                print("User and Password is correct!")
                 # User exists and password is correct
                 login_user(user)
-                return redirect(url_for('public.profile'))  # Redirect to a protected route or home page
+
+                return redirect(url_for('public.profile'))
             else:
+                print("No user found with the provided identifier!")
                 # Invalid credentials
                 flash('Invalid userIdentifier or password', 'danger')  # Flash message for login error
                 return redirect(url_for('public.login'))  # Redirect back to login page
@@ -110,6 +116,17 @@ def register_routes(app, db, bcrypt):
         """Render the profile page for logged-in users."""
         return render_template("profile.html", user=current_user)
     
+    @public_bp.route('/home')
+    def home():
+        """Home page route (or dashboard page)"""
+        return render_template("home.html")
+    
+    @public_bp.route('/settings')
+    @login_required
+    def settings():
+        """Render the settings page for the logged-in user."""
+        return render_template('settings.html')  # Create the settings.html page
+
 
     # Custom error pages
 

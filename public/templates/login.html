@@ -25,7 +25,7 @@
             <form class="form" id="form" action="{{ url_for('public.login') }}" method="POST">
                 <div class="form-control">
                     <label>Email/Username</label>
-                    <input type="email/username" placeholder="email/username" id="userIdentifier">
+                    <input type="email/username" placeholder="email/username" id="userIdentifier" name="userIdentifier">
                     <i class="fa-solid fa-check-circle"></i>
                     <i class="fa-solid fa-exclamation-circle"></i>
                     <small>Error message</small>
@@ -33,7 +33,7 @@
     
                 <div class="form-control">
                     <label>Password</label>
-                    <input type="password" placeholder="Password" id="password">
+                    <input type="password" placeholder="Password" id="password" name="password">
                     <i class="fa-solid fa-check-circle"></i>
                     <i class="fa-solid fa-exclamation-circle"></i>
                     <i class="fa-solid fa-eye-slash" id="toggle-password"></i>
