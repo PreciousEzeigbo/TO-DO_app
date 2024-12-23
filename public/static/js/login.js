@@ -1,6 +1,6 @@
 // Login form handling
 const form = document.getElementById('form');
-const email = document.getElementById('email'); // Match your input ID
+const emailOrUsername = document.getElementById('userIdentifier'); // Match your input ID
 const password = document.getElementById('password');
 
 // Check if the login form exists on the page
@@ -27,7 +27,7 @@ if (form) {
                     window.location.href = '/profile'; // Replace with your desired route
                 } else {
                     // Handle login failure (e.g., display an error message)
-                    setErrorFor(email, "Invalid email or password");
+                    setErrorFor(userIdentifier, "Invalid email/username or password");
                     setErrorFor(password, "");
                 }
             } catch (error) {
@@ -39,17 +39,17 @@ if (form) {
 
 // Validation function
 function checkInputs() {
-    const emailValue = email.value.trim();
+    const userIdentifierValue = userIdentifier.value.trim();
     const passwordValue = password.value.trim();
 
     let valid = true;
 
     // Email validation
-    if (emailValue === '') {
-        setErrorFor(email, 'Email cannot be blank');
+    if (userIdentifierValue === '') {
+        setErrorFor(userIdentifier, 'userIdentifier cannot be blank');
         valid = false;
     } else {
-        setSuccessFor(email);
+        setSuccessFor(userIdentifier);
     }
 
     // Password validation

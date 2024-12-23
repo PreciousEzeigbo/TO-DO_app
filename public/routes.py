@@ -21,25 +21,31 @@ def register_routes(app, db, bcrypt):
             username = request.form.get('username')
             email = request.form.get('email')
             password = request.form.get('password')
-            confirm_password = request.form.get('confirm_password')
+            confirmPassword = request.form.get('confirmPassword')
+
+            print(f"Received data: username={username}, email={email}, password={password}, confirmPassword={confirmPassword}")
 
             # Validate required fields
-            if not username or not email or not password or not confirm_password:
+            if not username or not email or not password or not confirmPassword:
                 flash("All fields are required", 'danger')
+                print("Validation failed: missing fields")
                 return redirect(url_for('public.register'))
 
             # Check if the passwords match
-            if password != confirm_password:
+            if password != confirmPassword:
                 flash("Passwords do not match", 'danger')
+                print("Validation failed: passwords don't match")
                 return redirect(url_for('public.register'))
 
            # Check if the username or email already exists
             if User.query.filter_by(username=username).first():
                 flash("User already exists", 'danger')
+                print("Validation failed: username already exists")
                 return redirect(url_for('public.register'))
 
             if User.query.filter_by(email=email).first():
                 flash("Email already in use", 'danger')
+                print("Validation failed: email already in use")
                 return redirect(url_for('public.register'))
 
 
@@ -50,13 +56,17 @@ def register_routes(app, db, bcrypt):
             # Hash the password
             try:
                 new_user.set_password(password)
+                print(f"Hashed password: {new_user.password}")
+
                 db.session.add(new_user)
                 db.session.commit()
                 flash("Registration successful!", 'success')
+                print(f"User {username} registered successfully!")
                 return redirect(url_for('public.login'))
             except Exception as e:
                 db.session.rollback()
                 flash(f"An error occurred: {str(e)}", 'danger')
+                print(f"Error during registration: {str(e)}")
                 return redirect(url_for('public.register'))
 
     
@@ -65,11 +75,12 @@ def register_routes(app, db, bcrypt):
         if request.method == 'GET':
             return render_template("login.html")
         elif request.method == 'POST':
-            username = request.form.get('username')
+            userIdentifier = request.form.get('email') or request.form.get('username')
             password = request.form.get('password')
 
             # Retrieve user from database
-            user = User.query.filter_by(username=username).first()
+            user = User.query.filter((User.email == userIdentifier) | (User.username == userIdentifier)).first()
+
 
             if user and user.check_password(password):
                 # User exists and password is correct
@@ -77,7 +88,7 @@ def register_routes(app, db, bcrypt):
                 return redirect(url_for('public.profile'))  # Redirect to a protected route or home page
             else:
                 # Invalid credentials
-                flash('Invalid username or password', 'danger')  # Flash message for login error
+                flash('Invalid userIdentifier or password', 'danger')  # Flash message for login error
                 return redirect(url_for('public.login'))  # Redirect back to login page
 
     @public_bp.route('/forgotten', methods=['GET', 'POST'])
