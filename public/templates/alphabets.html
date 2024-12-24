@@ -6,6 +6,7 @@
     <title>Home Page</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/alphabets.css') }}">
 </head>
 <body>
     <header>
@@ -41,39 +42,32 @@
         </ul>
     </div>
     <section class="main-container">
-        <div class="dashboard-container">
-            <h1>Choose your quiz 🤞</h1>
-            <div class="dashboard-content1">
-                <a href="{{ url_for('public.alpha') }}">
-                    <img src="{{ url_for('static', filename='images/alphabets.jpg') }}" alt="alpha">
-                    <h1>Alphabets</h1>
-                </a>       
+        <div class="content">
+            <h1>Pairing Uppercase Letters with Lowercase Letters</h1>
+            <div class="alphabets" id="uppercase-alphabets">
+                <div class="box" id="A" class="uppercase">{{ uppercase_alphabet[0] }}</div>
+                <div class="box" id="B" class="uppercase">{{ uppercase_alphabet[1] }}</div>
+                <div class="box" id="C" class="uppercase">{{ uppercase_alphabet[2] }}</div>
+                <div class="box" id="D" class="uppercase">{{ uppercase_alphabet[3] }}</div>
+                <div class="box" id="E" class="uppercase">{{ uppercase_alphabet[4] }}</div>
+                <div class="box" id="F" class="uppercase">{{ uppercase_alphabet[5] }}</div>
+                <div class="box" id="G" class="uppercase">{{ uppercase_alphabet[6] }}</div>
+                <div class="box" id="H" class="uppercase">{{ uppercase_alphabet[7] }}</div>
             </div>
-            <div class="dashboard-content2">
-                <a href="{{ url_for('public.numbers') }}">
-                    <img src="{{ url_for('static', filename='images/numbers.jpg') }}" alt="numbers">
-                    <h1>Numbers</h1>
-                </a>               
+            <p id="time">TIMER</p>
+            <div class="alphabets" id="lowercase-alphabets">
+                <div class="box" id="a" class="lowercase">{{ lowercase_alphabet[0] }}</div>
+                <div class="box" id="b" class="lowercase">{{ lowercase_alphabet[1] }}</div>
+                <div class="box" id="c" class="lowercase">{{ lowercase_alphabet[2] }}</div>
+                <div class="box" id="d" class="lowercase">{{ lowercase_alphabet[3] }}</div>
+                <div class="box" id="e" class="lowercase">{{ lowercase_alphabet[4] }}</div>
+                <div class="box" id="f" class="lowercase">{{ lowercase_alphabet[5] }}</div>
+                <div class="box" id="g" class="lowercase">{{ lowercase_alphabet[6] }}</div>
+                <div class="box" id="h" class="lowercase">{{ lowercase_alphabet[7] }}</div>
             </div>
-            <div class="dashboard-content3">
-                <a href="{{ url_for('public.alphabets') }}">
-                    <img src="{{ url_for('static', filename='images/alphabets.jpg') }}" alt="alphabets">
-                    <h1>Alphabets Pairing</h1>
-                </a>
-            </div>
-            <div class="dashboard-content4">
-                <img src="{{ url_for('static', filename='images/numbers.jpg') }}" alt="numbers">
-                <h1>Numbers</h1>
-            </div>
-        </div>
-
-        <div class="leaderboard-container">
-            <h1>Leader's Board</h1>
-            <ul>
-                <li>username</li>
-            </ul>
         </div>
     </section>
     <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/alphabets.js') }}"></script>
 </body>
 </html>

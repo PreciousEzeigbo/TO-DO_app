@@ -5,7 +5,7 @@
 }
 
 body{
-    background-color: rgb(233, 233, 233);
+    background-color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     min-height: 100vh;
     display: flex;
@@ -45,7 +45,7 @@ header .user {
     display: flex;
     align-items: center;
     top: 14px;
-    right: 30px;
+    right: 80px;
     background-color: transparent;
 }
 
@@ -154,14 +154,13 @@ header #menu-button {
 
 .main-container {
     display: flex;
-    background-color: rgb(233, 233, 233);
+    background-color: white;
     margin-left: 100px;
     margin-top: 100px;
     max-width: 1100px;
-    height: 580px;
-    border-radius: 5px;
+    height: 620px;
     box-shadow: 0 4px 8px #091a3a;
-    gap: 120px;
+    gap: 80px;
 }
 
 .main-container.shift {
@@ -171,59 +170,127 @@ header #menu-button {
 .dashboard-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 40px;
-    align-items: center;
-    background-color: rgb(233, 233, 233);
+    grid-template-rows: auto 1fr;
+    grid-gap: 5px;
+    align-items: start;
+    background-color: white;
     margin-left: 30px;
     margin-top: 15px;
-    width: 650px;
-    height: 500px;
-    border-radius: 5px;
+    width: 750px;
+    height: 600px;
     box-shadow: 0 4px 8px #091a3a;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.dashboard-container a {
+    text-decoration: none;
+}
+
+.dashboard-container h1 {
+    grid-row: 1;
+    grid-column: span 2;
+    text-align: center;
+    color: black;
+    font-size: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .dashboard-content1 {
+    width: 250px;
+    height: 230px;
     background-color: #091a3a;
     color: white;
-    padding: 60px 50px;
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 4px 8px #091a3a;
     margin-left: 60px;
     cursor: pointer;
+    margin: 0 auto;
+}
+
+.dashboard-content1 h1 {
+    color: white;
+    font-size: 23px;
+}
+
+.dashboard-content1 img {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
 }
 
 .dashboard-content2 {
-    background-color: #7af76a;
-    color: rgb(0, 0, 0);
-    padding: 60px 50px;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px #091a3a;
-    margin-right: 60px;
-    cursor: pointer;
-}
-
-.dashboard-content3 {
-    background-color: #de3aff;
-    color: rgb(0, 0, 0);
-    padding: 60px 50px;
+    width: 250px;
+    height: 230px;
+    background-color: #091a3a;
+    color: white;
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 4px 8px #091a3a;
     margin-left: 60px;
     cursor: pointer;
+    margin: 0 auto;
 }
 
-.dashboard-content4 {
+.dashboard-content2 h1 {
+    color: white;
+    font-size: 23px;
+}
+
+.dashboard-content2 img {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+}
+
+.dashboard-content3 {
+    width: 250px;
+    height: 230px;
     background-color: #091a3a;
     color: white;
-    padding: 60px 50px;
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 4px 8px #091a3a;
-    margin-right: 60px;
+    margin-left: 60px;
     cursor: pointer;
+    margin: 0 auto;
+}
+
+.dashboard-content3 h1 {
+    color: white;
+    font-size: 23px;
+}
+
+.dashboard-content3 img {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+}
+
+.dashboard-content4 {
+    width: 250px;
+    height: 230px;
+    background-color: #091a3a;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px #091a3a;
+    margin-left: 60px;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.dashboard-content4 h1 {
+    color: white;
+    font-size: 23px;
+}
+
+.dashboard-content4 img {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
 }
 
 .leaderboard-container {
@@ -231,7 +298,7 @@ header #menu-button {
     margin-top: 15px;
     margin-right: 30px;
     flex: 1;
-    max-width: 240px;
+    max-width: 280px;
     max-height: 300px;
     border-radius: 5px;
     box-shadow: 0 4px 8px #091a3a;

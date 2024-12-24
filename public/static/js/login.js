@@ -1,6 +1,6 @@
 // Login form handling
 const form = document.getElementById('form');
-const emailOrUsername = document.getElementById('userIdentifier'); // Match your input ID
+const emailOrUsername = document.getElementById('userIdentifier');
 const password = document.getElementById('password');
 
 // Check if the login form exists on the page
@@ -24,7 +24,7 @@ if (form) {
 
                 if (response.ok) {
                     // Handle successful login (e.g., redirect to a new page)
-                    window.location.href = '/profile'; // Replace with your desired route
+                    window.location.href = '/home';
                 } else {
                     // Handle login failure (e.g., display an error message)
                     setErrorFor(userIdentifier, "Invalid email/username or password");

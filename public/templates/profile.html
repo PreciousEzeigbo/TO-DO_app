@@ -49,10 +49,21 @@
             <p>Welcome to your profile!</p>
         </div>
         <div class="profile-info">
-            <p id="fullName">Full Name: Loading...</p>
-            <p id="email">Email: {{ current_user.email }}</p>
-            <p id="birthday">Birthday: Loading...</p>
-            <p id="hobbies">Hobbies: Loading...</p>
+            <form id="form" method="POST" action="{{ url_for('public.profile') }}">
+                <div>
+                    <label>Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" value="{{ current_user.full_name or '' }}" required>
+                </div>
+                <p id="email">Email: {{ current_user.email }}</p>
+                <div>
+                    <label>Birthday:</label>
+                    <input type="date" id="birthday" name="birthday" value="{{ current_user.birthday or '' }}" required>
+                </div>
+
+                <div>
+                    <button type="submit">Update Profile</button>
+                </div>
+            </form>
         </div>
     </section>
     <script src="{{ url_for('static', filename='js/home.js') }}"></script>

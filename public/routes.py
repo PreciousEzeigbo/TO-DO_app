@@ -4,6 +4,8 @@ from werkzeug.security import check_password_hash  # Import for checking hashed 
 
 from public.models import User, db
 
+import random
+
 
 def register_routes(app, db, bcrypt):
     public_bp = Blueprint('public', __name__, template_folder='templates', static_folder='static')
@@ -85,17 +87,47 @@ def register_routes(app, db, bcrypt):
             user = User.query.filter((User.email == userIdentifier) | (User.username == userIdentifier)).first()
             print(f"User found: {user}")
 
-            if user and user.check_password(password):
-                print("User and Password is correct!")
-                # User exists and password is correct
-                login_user(user)
-
-                return redirect(url_for('public.profile'))
+            if user:
+                if user.check_password(password):
+                    print("User and Password is correct!")
+                    # User exists and password is correct
+                    login_user(user)
+                    return redirect(url_for('public.home'))
+                else:
+                    print("Incorrect password!")
+                    flash('Invalid password, please try again.', 'danger')
+                    return redirect(url_for('public.login'))
             else:
                 print("No user found with the provided identifier!")
                 # Invalid credentials
                 flash('Invalid userIdentifier or password', 'danger')  # Flash message for login error
                 return redirect(url_for('public.login'))  # Redirect back to login page
+            
+            
+    @public_bp.route('/profile')
+    @login_required
+    def profile():
+        """Render the profile page for logged-in users."""
+        if request.method == 'POST':
+            # Get form data
+            full_name = request.form.get('fullName')
+            birthday = request.form.get('birthday')
+
+            # Update the current user's profile
+            current_user.full_name = full_name
+            current_user.birthday = birthday
+
+            # Save changes to the database
+            try:
+                db.session.commit()
+                flash("Profile updated successfully!", 'success')
+            except Exception as e:
+                db.session.rollback()
+                flash(f"Error updating profile: {str(e)}", 'danger')
+            
+            return redirect(url_for('public.profile'))
+        return render_template("profile.html", user=current_user)
+    
 
     @public_bp.route('/forgotten', methods=['GET', 'POST'])
     def forgotten():
@@ -109,14 +141,9 @@ def register_routes(app, db, bcrypt):
         logout_user()
         flash('You have been logged out.', 'info')
         return redirect(url_for('public.login'))
-
-    @public_bp.route('/profile')
-    @login_required
-    def profile():
-        """Render the profile page for logged-in users."""
-        return render_template("profile.html", user=current_user)
     
     @public_bp.route('/home')
+    @login_required
     def home():
         """Home page route (or dashboard page)"""
         return render_template("home.html")
@@ -125,7 +152,44 @@ def register_routes(app, db, bcrypt):
     @login_required
     def settings():
         """Render the settings page for the logged-in user."""
-        return render_template('settings.html')  # Create the settings.html page
+        return render_template('settings.html')
+    
+    @public_bp.route('/alpha')
+    @login_required
+    def alpha():
+        """Learnig page route to learn alphabets"""
+        return render_template("alpha.html")
+    
+    @public_bp.route('/alphabets')
+    @login_required
+    def alphabets():
+        """Randomize and display uppercase and lowercase letters"""
+        # Define the list of uppercase and lowercase letters
+        uppercase_alphabet = [chr(i) for i in range(65, 91)]  # A-Z
+        lowercase_alphabet = [chr(i) for i in range(97, 123)]  # a-z
+
+        # Pair uppercase and lowercase letters together
+        letter_pairs = list(zip(uppercase_alphabet, lowercase_alphabet))
+        
+        # Shuffle the letter pairs randomly
+        random.shuffle(letter_pairs)
+
+        # Get the first 8 pairs to display
+        selected_pairs = letter_pairs[:8]
+
+        # Separate the pairs back into two lists
+        uppercase_alphabet_shuffled = [pair[0] for pair in selected_pairs]
+        lowercase_alphabet_shuffled = [pair[1] for pair in selected_pairs]
+
+        return render_template("alphabets.html", 
+                               uppercase_alphabet=uppercase_alphabet_shuffled, 
+                               lowercase_alphabet=lowercase_alphabet_shuffled)
+    
+    @public_bp.route('/numbers')
+    @login_required
+    def numbers():
+        """Home page route (or dashboard page)"""
+        return render_template("numbers.html")
 
 
     # Custom error pages
