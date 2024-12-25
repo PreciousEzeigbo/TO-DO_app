@@ -60,3 +60,25 @@
     margin-bottom: 30px;
     color: #091a3a;
 }
+
+#alphabets-order {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 15px;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#alphabets-displayed {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 15px;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
