@@ -168,12 +168,9 @@ def register_routes(app, db, bcrypt):
         uppercase_alphabet = [chr(i) for i in range(65, 91)]  # A-Z
         lowercase_alphabet = [chr(i) for i in range(97, 123)]  # a-z
 
-        # Define the list of alphabets displayed for puzzle 2
-        alphabet_displayed = [chr(i) for i in range(65, 91)]  # a-z
-
         # Pair uppercase and lowercase letters together
         letter_pairs = list(zip(uppercase_alphabet, lowercase_alphabet))
-        
+
         # Shuffle the letter pairs randomly
         random.shuffle(letter_pairs)
 
@@ -184,13 +181,23 @@ def register_routes(app, db, bcrypt):
         uppercase_alphabet_shuffled = [pair[0] for pair in selected_pairs]
         lowercase_alphabet_shuffled = [pair[1] for pair in selected_pairs]
 
+        # Define the list of alphabets displayed for puzzle 2
+        alphabet_displayed = [chr(i) for i in range(97, 123)]  # a-z
+
         # For Puzzle 2: Shuffle lowercase alphabet to be arranged
         alphabet_displayed_randomized = random.sample(alphabet_displayed, 8)
 
+        # Define the list of alphabets displayed for puzzle 2
+        alpha_displayed = [chr(i) for i in range(65, 91)]  # a-z
+
+        # For Puzzle 2: Shuffle lowercase alphabet to be arranged
+        alpha_displayed_randomized = random.sample(alpha_displayed, 26)
+        
         return render_template("alphabets.html", 
                                uppercase_alphabet=uppercase_alphabet_shuffled, 
                                lowercase_alphabet=lowercase_alphabet_shuffled,
-                               alphabet_displayed=alphabet_displayed_randomized)
+                               alphabet_displayed=alphabet_displayed_randomized,
+                               alpha_displayed=alpha_displayed_randomized)
     
     @public_bp.route('/numbers')
     @login_required

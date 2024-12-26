@@ -32,6 +32,12 @@
     text-align: center;
 }
 
+.content h3 {
+    font-size: 25px;
+    justify-content: center;
+    text-align: center;
+}
+
 .alphabets {
     display: flex;
     flex-wrap: wrap;
@@ -51,6 +57,21 @@
     font-size: 30px;
     width: 80px;
     min-width: 80px;
+    border-radius: 5px;
+    border: 2px solid black;
+    box-shadow: 0 4px 8px #091a3a;
+    margin: 0;
+    cursor: pointer;
+}
+
+.item {
+    background-color: rgb(233, 233, 233);
+    color: black;
+    text-align: center;
+    padding: 10px;
+    font-size: 30px;
+    width: 60px;
+    min-width: 60px;
     border-radius: 5px;
     border: 2px solid black;
     box-shadow: 0 4px 8px #091a3a;

@@ -54,6 +54,19 @@ function switchToPuzzle2() {
     document.getElementById("time").style.justifyContent = "center";
 }
 
+// Function to switch to Puzzle 3 after Puzzle 2 is completed
+function switchToPuzzle3() {
+    document.getElementById("puzzle-2").style.display = "none";
+    document.getElementById("alphabets-order").style.display = "none";
+    document.getElementById("alphabets-displayed").style.display = "none";
+    document.getElementById("time").style.display = "none";
+    document.getElementById("puzzle-3").style.display = "flex";
+    document.getElementById("alphas-order").style.display = "flex";
+    document.getElementById("alphas-displayed").style.display = "flex";
+    document.getElementById("time").style.display = "flex";
+    document.getElementById("time").style.justifyContent = "center";
+}
+
 // Puzzle 1: Uppercase and Lowercase Matching Logic
 function setupPuzzle1() {
     const uppercaseBoxes = document.querySelectorAll("#uppercase-alphabets .box");
@@ -86,7 +99,7 @@ function setupPuzzle1() {
                 if ([...uppercaseBoxes].every(box => box.style.backgroundColor === "green") &&
                     [...lowercaseBoxes].every(box => box.style.backgroundColor === "green")) {
                     puzzle1Complete = true;
-                    setTimeout(() => switchToPuzzle2(), 500);
+                    setTimeout(() => switchToPuzzle2(), 1000);
                 }
             } else {
                 lowercaseBox.style.backgroundColor = "red";
@@ -107,27 +120,27 @@ function setupPuzzle2() {
     const displayedBoxes = Array.from(alphabetsDisplayed.getElementsByClassName("box"));
     const orderBoxes = Array.from(alphabetsOrder.getElementsByClassName("box"));
 
-    const alphabetDisplayed = displayedBoxes.map(box => box.textContent.toLowerCase());
-    const correctOrder = [...alphabetDisplayed].sort();
+    const shownAlphabets = displayedBoxes.map(box => box.textContent);
+    const correctOrder = [...shownAlphabets].sort();
 
-    let currentIndex = 0;
+    let selectedIndex = 0;
 
     displayedBoxes.forEach(renderedAlphabets => {
         renderedAlphabets.addEventListener("click", function () {
             if (renderedAlphabets.style.pointerEvents === "none") return;
 
-            const letter = renderedAlphabets.textContent.toLowerCase();
+            const alphabet = renderedAlphabets.textContent;
 
-            if (letter === correctOrder[currentIndex]) {
-                const correspondingOrderBox = document.getElementById("box-" + (currentIndex + 1));
+            if (alphabet === correctOrder[selectedIndex]) {
+                const correspondingOrderBox = document.getElementById("box-" + (selectedIndex + 1));
                 correspondingOrderBox.textContent = renderedAlphabets.textContent;
                 renderedAlphabets.style.pointerEvents = "none";
                 correspondingOrderBox.style.backgroundColor = "lightgreen";
                 renderedAlphabets.style.backgroundColor = "lightgreen";
-                currentIndex++;
+                selectedIndex++;
             } else {
-                const correspondingOrderBox = document.getElementById("box-" + (currentIndex + 1));
-                correspondingOrderBox.textContent = "❌";
+                const correspondingOrderBox = document.getElementById("box-" + (selectedIndex + 1));
+                correspondingOrderBox.textContent = "🙅‍♂️";
                 correspondingOrderBox.style.backgroundColor = "red";
                 renderedAlphabets.style.backgroundColor = "red";
 
@@ -144,12 +157,66 @@ function setupPuzzle2() {
             }
 
             if ([...orderBoxes].every(box => box.textContent !== "")) {
-                alert("Puzzle 2 is complete!");
+                puzzle1Complete = true;
+                setTimeout(() => switchToPuzzle3(), 1000);
+            }
+        });
+    });
+}
+
+
+// Puzzle 2: Alphabetical Ordering
+function setupPuzzle3() {
+    const alphasDisplayed = document.getElementById("alphas-displayed");
+    const alphasOrder = document.getElementById("alphas-order");
+    const displayedItems = Array.from(alphasDisplayed.getElementsByClassName("item"));
+    const orderItems = Array.from(alphasOrder.getElementsByClassName("item"));
+
+    const shownAlphas = displayedItems.map(item => item.textContent);
+    const alphabeticalOrder = [...shownAlphas].sort();
+
+    let currentIndex = 0;
+
+    displayedItems.forEach(renderedAlphas => {
+        renderedAlphas.addEventListener("click", function () {
+            if (renderedAlphas.style.pointerEvents === "none") return;
+
+            const alpha = renderedAlphas.textContent;
+
+            if (alpha === alphabeticalOrder[currentIndex]) {
+                const correspondingOrderItem = document.getElementById("item-" + (currentIndex + 1));
+                correspondingOrderItem.textContent = renderedAlphas.textContent;
+                renderedAlphas.style.pointerEvents = "none";
+                correspondingOrderItem.style.backgroundColor = "green";
+                renderedAlphas.style.backgroundColor = "green";
+                currentIndex++;
+            } else {
+                const correspondingOrderItem = document.getElementById("item-" + (currentIndex + 1));
+                correspondingOrderItem.textContent = "🙅‍♀️";
+                correspondingOrderItem.style.backgroundColor = "red";
+                renderedAlphas.style.backgroundColor = "red";
+
+                displayedItems.forEach(item => item.style.pointerEvents = "none");
+
+                setTimeout(() => {
+                    correspondingOrderItem.textContent = "";
+                    correspondingOrderItem.style.backgroundColor = "";
+                    renderedAlphas.style.backgroundColor = "";
+
+                    renderedAlphas.style.pointerEvents = "auto";
+                    displayedItems.forEach(box => box.style.pointerEvents = "auto");
+                }, 2000);
+            }
+
+            if ([...orderItems].every(box => box.textContent !== "")) {
+                alert("Puzzle is complete!");
                 disableInteractions();
             }
         });
     });
 }
+
+
 
 // DOM content loaded event
 document.addEventListener("DOMContentLoaded", function () {
@@ -157,4 +224,5 @@ document.addEventListener("DOMContentLoaded", function () {
     shuffleLowercase();
     setupPuzzle1();
     setupPuzzle2();
+    setupPuzzle3();
 });
