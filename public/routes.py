@@ -73,10 +73,12 @@ def register_routes(app, db, bcrypt):
 
             if user and user.check_password(password):
                 # User exists and password is correct
+                print(f"User {user.username} logged in successfully")
                 login_user(user)
-                return redirect(url_for('public.profile'))  # Redirect to a protected route or home page
+                return redirect(url_for('public.home'))  # Redirect to a protected route or home page
             else:
                 # Invalid credentials
+                print("Invalid credentials")
                 flash('Invalid username or password', 'danger')  # Flash message for login error
                 return redirect(url_for('public.login'))  # Redirect back to login page
 
@@ -96,8 +98,7 @@ def register_routes(app, db, bcrypt):
     @public_bp.route('/profile')
     @login_required
     def profile():
-        """Render the profile page for logged-in users."""
-        return render_template("profile.html", user=current_user)
+        return render_template('profile.html')
     
 
     # Custom error pages

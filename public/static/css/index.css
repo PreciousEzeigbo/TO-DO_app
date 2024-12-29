@@ -1,174 +1,315 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    background-color: rgb(233, 233, 233);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    overflow-y: scroll;
+:root {
+    --primary-color: #3e74e9;
+    --secondary-color: #2196F3;
+    --text-color: #333;
+    --bg-color: #f5f5f5;
+    --white: #ffffff;
+    --black: black;
 }
 
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+/* Header and Navigation */
 header {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: fixed;
+    width: 100%;
+    z-index: 10;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    padding: 6px 18px;
-    gap: 5px;
-    box-shadow: 0 4px 8px #091a3a;
-    z-index: 1000;
+    padding: 1rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-header .thinkytots {
-    flex: 1;
+.logo-container {
+    display: flex;
+    align-items: center;
 }
 
-header .thinkytots-logo {
-    width: 170px;
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+
+.logo-image {
+    width: 50px; /* Adjust size of the logo image */
     height: auto;
-    margin-left: 80px;
+    margin-right: 10px; /* Space between logo and text */
 }
 
-header nav {
-    flex: 2;
-    text-align: center;
+.logo-text {
+    font-family: 'Comic Sans MS', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
 }
 
-header .nav-links {
+nav ul {
+    display: flex;
     list-style: none;
-    display: flex;
-    gap: 30px;
-    margin-left: 180px;
 }
 
-header .nav-links li a {
-    text-decoration: none;
-    color: black;
-    font-weight: bolder;
-    font-size: 22px;
+nav ul li {
+    margin-left: 2rem;
 }
 
-.learning-image-container {
-    position: relative;
-    height: 800px;
-    display: flex;
-    overflow: hidden;
-    margin-top: 80px;
-    position: relative;
-    justify-content: center;
-    align-items: center;
+nav ul li a {
+    font-family: 'Comic Sans MS', sans-serif;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-.learning-image {
-    width: 100%;
-    height: 100%;
-    display: block;
-    box-shadow: 0 4px 8px #091a3a;
+nav ul li a:hover {
+    color: var(--primary-color);
 }
 
-.learning-quote {
-    position: absolute;
-    display: flex;
-    top: 20%;
-    margin-right: 50%;
-    left: 90px;
+.cta-button {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
 }
 
-.quote {
-    font-size: 3.5vw;
-    font-weight: bolder;
-    color: white;
+.cta-button:hover {
+    background-color: #45a049;
 }
 
-.link {
-    position: absolute;
-    display: flex;
-    top: 45%;
-    margin-right: 100%;
-    left: 30%;
+/* Main content */
+main {
+    padding-top: 60px;
 }
 
-.link a {
-    text-decoration: none;
-    font-size: 30px;
-    font-weight: bolder;
-    color: white;
-    padding: 15px 25px;
-    white-space: nowrap;
+section {
+    padding: 4rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.link .get-started {
-    background-color: rgb(184, 0, 184);
-    border-radius: 10px;
+h1, h2, h3 {
+    margin-bottom: 1rem;
 }
 
+/* Hero section */
+#hero {
+    background-image: linear-gradient(to right, #e0f2ff, #90caf9, #2196f3);
+    color: var(--white);
+    text-align: center;
+    padding: 6rem 5%;
+}
+
+.hero-content h1 {
+    font-family: 'Comic Sans MS', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-family: 'Comic Sans MS', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Features section */
 #features {
+    font-family: 'Comic Sans MS', sans-serif;
+    background-color: var(--white);
     text-align: center;
-    margin-top: 30px;
-    font-size: 28px;
 }
 
-.features {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 10px;
-    margin-top: 30px;
+#features h2 {
+    font-family: 'Comic Sans MS', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
 }
 
-.feature-items {
-    flex: 1;
-    max-width: 28%;
-    text-align: center;
-    margin-bottom: 35px;
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background-color: var(--bg-color);
     border-radius: 10px;
-    background-color: white; 
+    padding: 2rem;
+    transition: all 0.3s ease;
 }
 
-.feature-items img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+.feature-card {
+    background-color: var(--bg-color);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border-radius: 10px;
-    margin-bottom: 25px;
+    padding: 2rem;
+    color: white; /* To contrast with background images */
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: 300px; /* Ensures enough space for image and text */
 }
 
-.feature-items h2 {
-    font-size: 30px;
-    font-weight: bold;
-    margin-top: 10px;
+/* Different background images for each card */
+.feature-card:nth-child(1) {
+    background-image: url("/static/images/quiz.jpg");
 }
 
-.feature-items p {
-    font-size: 20px;
-    color: rgb(184, 0, 184);
-    margin-top: 10px;
+.feature-card:nth-child(2) {
+    background-image: url("/static/images/progress.jpg");
 }
 
+.feature-card:nth-child(3) {
+    background-image: url("/static/images/leaderboard.jpg");
+}
+
+.feature-card h3, .feature-card p {
+    position: relative; /* Ensures text stays visible on top of the background */
+    z-index: 2;
+}
+
+.feature-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); /*dark overlay to enhance text readability */
+    z-index: 1;
+}
+
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card h3 {
+    font-family: 'Comic Sans MS', sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--black);
+}
+
+/* About section */
 #about {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 28px;
+    background-color: var(--bg-color);
 }
 
-.about-items {
-    background-color: white;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 35px;
+#about h2 {
+    font-family: 'Comic Sans MS', sans-serif;
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+#about h3 {
+    font-family: 'Comic Sans MS', sans-serif;
 }
 
 #about p {
-    font-size: 25x;
-    color: rgb(184, 0, 184);
-    margin-top: 10px;
+    font-family: 'Comic Sans MS', sans-serif;
+    margin-bottom: 1.5rem;
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.team-member {
+    text-align: center;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    max-width: 300px;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+.team-member h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.social-links a {
+    font-family: 'Comic Sans MS', sans-serif;
+    margin: 0 0.5rem;
+    color: var(--primary-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--text-color);
+    color: var(--white);
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+
+    .hero-content h1 {
+        font-family: 'Comic Sans MS', sans-serif;
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-family: 'Comic Sans MS', sans-serif;
+        font-size: 1rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
 }
