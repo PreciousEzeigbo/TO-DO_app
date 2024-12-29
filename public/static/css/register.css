@@ -84,28 +84,6 @@ header .thinkytots-logo {
     font-size: 22px;
 }
 
-#loading, #success-message {
-    position: fixed;
-    display: none;
-    top: 78%;
-    left: 50%;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    text-align: center;
-    color: white;
-    transform: translate(-50%, -50%);
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 15px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    z-index: 9999;
-}
-
-#loading img {
-    width: 50px;
-    height: 50px;
-}
-
 #form {
     padding: 15px 40px;
 }

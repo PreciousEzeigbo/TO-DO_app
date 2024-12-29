@@ -9,9 +9,10 @@ const confirmPassword = document.getElementById('confirmPassword');
 // Check if the registration form exists on the page
 if (form) {
     // Add an event listener for the form's submit event
-    form.addEventListener('submit', async (event) => {
+    form.addEventListener('submit', (event) => {
         // Prevent the default form submission behavior
         event.preventDefault();
+
         // Validate form inputs
         if (checkInputs()) {
             // Submit form if inputs are valid
@@ -77,7 +78,7 @@ function checkInputs() {
     return valid;
 }
 
-    // .form-control
+// .form-control
 function setErrorFor(input, message) {
     const formControl = input.parentElement;
     const small = formControl.querySelector('small')
@@ -89,7 +90,7 @@ function setErrorFor(input, message) {
     small.innerText = message;
 }
 
-    // .form-control
+// .form-control
 function setSuccessFor(input) {
     const formControl = input.parentElement;
 

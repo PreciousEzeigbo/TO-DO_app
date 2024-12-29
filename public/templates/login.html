@@ -18,18 +18,14 @@
             <img src="{{ url_for('static', filename='images/book2.png') }}" alt="books-image" class="books-image">
         </div>
 
-        <div class="container">
-            <div id="success-message" style="display: none;">
-                <p>Registration Successful! Redirecting...</p>
-            </div>
-    
+        <div class="container">    
             <div class="header">
                 <h2>Login</h2>
             </div>
             <form class="form" id="form" action="{{ url_for('public.login') }}" method="POST">
                 <div class="form-control">
-                    <label>Email</label>
-                    <input type="email" placeholder="John1234@mail.com" id="email">
+                    <label>Email/Username</label>
+                    <input type="email/username" placeholder="email/username" id="userIdentifier" name="userIdentifier">
                     <i class="fa-solid fa-check-circle"></i>
                     <i class="fa-solid fa-exclamation-circle"></i>
                     <small>Error message</small>
@@ -37,7 +33,7 @@
     
                 <div class="form-control">
                     <label>Password</label>
-                    <input type="password" placeholder="Password" id="password">
+                    <input type="password" placeholder="Password" id="password" name="password">
                     <i class="fa-solid fa-check-circle"></i>
                     <i class="fa-solid fa-exclamation-circle"></i>
                     <i class="fa-solid fa-eye-slash" id="toggle-password"></i>

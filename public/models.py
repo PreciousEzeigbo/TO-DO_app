@@ -1,12 +1,8 @@
 from flask_login import UserMixin
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
-from public.app import db, login_manager
+from public.app import db
 
-@login_manager.user_loader
-def load_user(user_id):
-    """Load a user from the database based on user ID."""
-    return User.query.get(int(user_id))
 
 class User(db.Model, UserMixin):
     """User model for authentication."""
@@ -15,7 +11,9 @@ class User(db.Model, UserMixin):
     uid = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(120), nullable=False)  # Store hashed passwords
+    password = db.Column(db.String(120), nullable=False)
+    full_name = db.Column(db.String(120))
+    birthday = db.Column(db.Date)
     date_added = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):

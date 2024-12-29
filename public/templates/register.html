@@ -19,18 +19,15 @@
         </div>
 
         <div class="container">
-            <div id="success-message" style="display: none;">
-                <p>Registration Successful! Redirecting...</p>
-            </div>
             {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        {% for category, message in messages %}
-            <div class="alert alert-{{ category }}">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
-{% endwith %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                           {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
     
             <div class="header">
                 <h2>Create Account</h2>
@@ -38,7 +35,7 @@
             <form id="form" method="POST" action="{{ url_for('public.register') }}">
                 <div class="form-control">
                     <label>Username</label>
-                    <input type="text" placeholder="John1234" id="username">
+                    <input type="text" placeholder="John1234" id="username" name="username">
                     <i class="fa-solid fa-check-circle"></i>
                     <i class="fa-solid fa-exclamation-circle"></i>
                     <small>Error message</small>
@@ -46,7 +43,7 @@
     
                 <div class="form-control">
                     <label>Email</label>
-                    <input type="email" placeholder="John1234@mail.com" id="email">
+                    <input type="email" placeholder="John1234@mail.com" id="email" name="email">
                     <i class="fa-solid fa-check-circle"></i>
                     <i class="fa-solid fa-exclamation-circle"></i>
                     <small>Error message</small>
@@ -54,7 +51,7 @@
     
                 <div class="form-control">
                     <label>Password</label>
-                    <input type="password" placeholder="Password" id="password">
+                    <input type="password" placeholder="Password" id="password" name="password">
                     <i class="fa-solid fa-check-circle"></i>
                     <i class="fa-solid fa-exclamation-circle"></i>
                     <small>Error message</small>
@@ -62,7 +59,7 @@
     
                 <div class="form-control">
                     <label>Confirm Password</label>
-                    <input type="Password" placeholder="Confirm password" id="confirmPassword">
+                    <input type="Password" placeholder="Confirm password" id="confirmPassword" name="confirmPassword">
                     <i class="fa-solid fa-check-circle"></i>
                     <i class="fa-solid fa-exclamation-circle"></i>
                     <small>Error message</small>

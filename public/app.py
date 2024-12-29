@@ -36,7 +36,7 @@ def create_app():
 
     @login_manager.user_loader
     def load_user(user_id):
-        return User.query.get(int(user_id))
+        return User.query.filter_by(uid=user_id).first()
 
     # Register routes
     from public.routes import register_routes
