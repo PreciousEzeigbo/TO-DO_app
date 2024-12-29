@@ -154,15 +154,15 @@ def register_routes(app, db, bcrypt):
         """Render the settings page for the logged-in user."""
         return render_template('settings.html')
     
-    @public_bp.route('/alpha')
-    @login_required
-    def alpha():
-        """Learnig page route to learn alphabets"""
-        return render_template("alpha.html")
-    
     @public_bp.route('/alphabets')
     @login_required
     def alphabets():
+        """Learnig page route to learn alphabets"""
+        return render_template("alphabets.html")
+    
+    @public_bp.route('/alphas')
+    @login_required
+    def alphas():
         """Randomize and display uppercase and lowercase letters"""
         # Define the list of uppercase and lowercase letters
         uppercase_alphabet = [chr(i) for i in range(65, 91)]  # A-Z
@@ -193,7 +193,7 @@ def register_routes(app, db, bcrypt):
         # For Puzzle 2: Shuffle lowercase alphabet to be arranged
         alpha_displayed_randomized = random.sample(alpha_displayed, 26)
         
-        return render_template("alphabets.html", 
+        return render_template("alphas.html", 
                                uppercase_alphabet=uppercase_alphabet_shuffled, 
                                lowercase_alphabet=lowercase_alphabet_shuffled,
                                alphabet_displayed=alphabet_displayed_randomized,
@@ -203,7 +203,14 @@ def register_routes(app, db, bcrypt):
     @login_required
     def numbers():
         """Home page route (or dashboard page)"""
-        return render_template("numbers.html")
+        # Generate numbers ranging from 1 to 100
+        numbers = list(range(1, 101))
+
+        # Join numbers into a string using one of the methods mentioned
+        numbers_sequence = ', '.join(str(number) for number in numbers)
+
+        # Pass the numbers to the template
+        return render_template("numbers.html", display_numbers=numbers_sequence)
 
 
     # Custom error pages
